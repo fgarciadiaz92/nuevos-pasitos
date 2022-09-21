@@ -2,6 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\Cors;
+
+use App\Http\Controllers\PruebaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +17,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+
+Route::get('/prueba/',[PruebaController::class, 'index']);
+Route::get('/prueba/{id}',[PruebaController::class, 'show']);
