@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PruebaController;
 use App\Http\Controllers\TipoCalificacionController;
-
+use Laravel\Socialite\Facades\Socialite;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -23,3 +23,15 @@ Route::get('/tipo-calificacion/{id}',[TipoCalificacionController::class, 'show']
 Route::get('/prueba/{id}',[PruebaController::class, 'show']);
 Route::post('/prueba',[PruebaController::class, 'create']);
 Route::delete('/prueba/{id}',[PruebaController::class, 'destroy']);
+
+
+Route::group(['middleware' => ['web']], function () {
+    Route::get('/login', function () {
+        return Socialite::driver('google')->redirect();
+    });
+    Route::get('/google-callback', function () {
+        $user = Socialite::driver('google')->user();
+
+        dd ($user);
+    });
+});
