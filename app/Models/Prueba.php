@@ -23,5 +23,14 @@ class Prueba extends Model
         "cantidad_alumnos",
         "created_at",
         "updated_at",
+        "tipo_calificacion_id"
     ];
+    protected $hidden = ['created_at','updated_at'];
+
+    public function tipoCalificacion()
+    {
+        return $this->belongsTo(Tipo_calificacion::class,'tipo_calificacion_id', 'id_tipo_calificacion');
+    }
+
+
 }

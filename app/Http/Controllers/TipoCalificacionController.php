@@ -14,7 +14,8 @@ class TipoCalificacionController extends Controller
      */
     public function index()
     {
-        //
+        /*return Tipo_calificacion::with('prueba')->get();*/
+        return Tipo_calificacion::all();
     }
 
     /**
@@ -44,9 +45,9 @@ class TipoCalificacionController extends Controller
      * @param  \App\Models\Tipo_calificacion  $tipo_calificacion
      * @return \Illuminate\Http\Response
      */
-    public function show(Tipo_calificacion $tipo_calificacion)
+    public function show($id)
     {
-        //
+        return Tipo_calificacion::find($id);
     }
 
     /**

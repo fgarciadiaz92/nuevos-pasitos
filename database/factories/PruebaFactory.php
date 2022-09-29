@@ -23,7 +23,7 @@ class PruebaFactory extends Factory
             "duracion_prueba"=>$this->faker->randomDigit,
             "autor_prueba"=>$this->faker->name,
             "estado_prueba"=>$this->faker->randomElement(['Iniciado','Terminado','Finalizado']),
-            "cantidad_alumnos"=>$this->faker->randomDigit,
+            "cantidad_alumnos"=>$this->faker->randomDigit
         ];
     }
 }

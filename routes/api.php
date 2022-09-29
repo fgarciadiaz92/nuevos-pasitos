@@ -1,10 +1,8 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Middleware\Cors;
-
 use App\Http\Controllers\PruebaController;
+use App\Http\Controllers\TipoCalificacionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,4 +17,9 @@ use App\Http\Controllers\PruebaController;
 
 
 Route::get('/prueba/',[PruebaController::class, 'index']);
+Route::get('/tipo-calificacion/',[TipoCalificacionController::class, 'index']);
+Route::get('/tipo-calificacion/{id}',[TipoCalificacionController::class, 'show']);
+
 Route::get('/prueba/{id}',[PruebaController::class, 'show']);
+Route::post('/prueba',[PruebaController::class, 'create']);
+Route::delete('/prueba/{id}',[PruebaController::class, 'destroy']);

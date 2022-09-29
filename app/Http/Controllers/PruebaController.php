@@ -14,7 +14,7 @@ class PruebaController extends Controller
      */
     public function index()
     {
-        return Prueba::all();
+        return Prueba::with('tipoCalificacion')->get();
     }
 
     /**
@@ -22,20 +22,22 @@ class PruebaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
 
-    }
+        $request=$request->all();
+        $prueba=new Prueba([
+            "nombre_prueba"=>$request['nombre_prueba'],
+            "descripcion_prueba"=>$request['descripcion_prueba'],
+            "cantidad_preguntas"=>$request['cantidad_preguntas'],
+            "duracion_prueba"=>$request['duracion_prueba'] . ' min',
+            "autor_prueba"=>$request['autor_prueba'],
+            "estado_prueba"=>$request['estado_prueba'],
+            "cantidad_alumnos"=>$request['cantidad_alumnos'],
+        ]);
+        $prueba->save();
+        return response()->json([$prueba]);
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
     }
 
     /**
@@ -80,10 +82,11 @@ class PruebaController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function destroy($id)
     {
-        //
+        Prueba::find($id)->delete();
+        return response()->json(['status'=>'OK','data'=>'Dato Eliminado Correctamente'],200);
     }
 }

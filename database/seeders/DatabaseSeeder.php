@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\Tipo_calificacion;
 use Illuminate\Database\Seeder;
 use App\Models\Prueba;
+
 
 class DatabaseSeeder extends Seeder
 {
@@ -16,5 +18,6 @@ class DatabaseSeeder extends Seeder
     {
          /*$this->call(PruebaSeeder::class);*/
         Prueba::factory(9)->create();
+        Tipo_calificacion::factory(3)->create();
     }
 }
