@@ -15,11 +15,12 @@ use App\Http\Controllers\TipoCalificacionController;
 |
 */
 
-
+//RUTAS PRUEBA
 Route::get('/prueba/',[PruebaController::class, 'index']);
-Route::get('/tipo-calificacion/',[TipoCalificacionController::class, 'index']);
-Route::get('/tipo-calificacion/{id}',[TipoCalificacionController::class, 'show']);
-
 Route::get('/prueba/{id}',[PruebaController::class, 'show']);
 Route::post('/prueba',[PruebaController::class, 'create']);
 Route::delete('/prueba/{id}',[PruebaController::class, 'destroy']);
+
+//RUTAS CALIFICACION
+Route::get('/tipo-calificacion/',[TipoCalificacionController::class, 'index']);
+Route::get('/tipo-calificacion/{id}',[TipoCalificacionController::class, 'show']);
